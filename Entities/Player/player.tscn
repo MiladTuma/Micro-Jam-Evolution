@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://3lms8jd3k1jl"]
+
+[ext_resource type="Script" uid="uid://b6y18xmkantup" path="res://Entities/Player/player.gd" id="1_3uyv8"]
+[ext_resource type="Texture2D" uid="uid://b7x832aecy1xu" path="res://Entities/Player/Sprites/frog_sit_right.png" id="2_3uyv8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn0bi"]
+size = Vector2(13, 6)
+
+[node name="Player" type="CharacterBody2D" unique_id=1335795623]
+script = ExtResource("1_3uyv8")
+
+[node name="Frog Sprite" type="Sprite2D" parent="." unique_id=91860524]
+texture = ExtResource("2_3uyv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1449579038]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_dn0bi")
