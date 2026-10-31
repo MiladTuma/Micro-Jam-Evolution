@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 # Variablen die wir ändern könnten für Evolution
@@ -7,6 +8,8 @@ var SWIMMINGSPEED : int = 50
 @export var tile_map: TileMapLayer 
 @export var shadow: Sprite2D
 
+func _read() -> void:
+	add_to_group("player")
 
 enum Terrain {
 	GROUND, 

@@ -1,17 +1,32 @@
 extends CharacterBody2D
 
-@export var speed: float = 150.0
-var player: Node2D = null
+@export var speed: float =10.0
+
+var player_ref: Player = null 
 
 func _ready() -> void:
-	# Find the player using a Group (make sure your player is added to the "player" group)
-	player = get_tree().get_first_node_in_group("player")
+	player_ref = get_tree().get_first_node_in_group("player")
+	
+	
+	
 
 func _physics_process(delta: float) -> void:
-	if player:
-		# Calculate direction toward the player
-		var direction: Vector2 = global_position.direction_to(player.global_position)
-		
-		# Set velocity and move
+	if player_ref == null:
+		return
+
+	
+	
+
+	if player_ref.current_terrain == Player.Terrain.GROUND:
+		var direction = (player_ref.global_position - global_position).normalized()
 		velocity = direction * speed
-		move_and_slide()
+		
+		if direction.x < 0:
+			$Sprite2D.flip_h = true
+		elif direction.x > 0:
+			$Sprite2D.flip_h = false
+			
+	else:
+		velocity = Vector2.ZERO
+		
+	move_and_slide()
