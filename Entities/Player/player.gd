@@ -2,20 +2,21 @@ extends CharacterBody2D
 
 # Variablen die wir ändern könnten für Evolution
 
-var SPEED : int = 100
-var SWIMMINGSPEED : int = 50
+var GROUNDSPEED : float = 20
+var SWIMMINGSPEED : float = 20
 @export var tile_map: TileMapLayer 
 
 enum Terrain {
-	GROUND, 
+	GROUND,
 	WATER
 }
-var hp : int = 100
-var damage : int = 10
-var Speed_Coefficient : int
-var Swimming_Coefficient : int
-var hp_Coefficient : int 
-var damage_Coefficient : int 
+var hp : float = 100
+var damage : float = 10
+var GroundSpeed_Coefficient : float = 0.8
+var SwimmingSpeed_Coefficient : float = 0.8
+var hp_Coefficient : float
+var damage_Coefficient : float
+var poisonResistance : float
 @export var animation_sprites: Sprite2D
 @export var animation_player: AnimationPlayer
 
@@ -24,14 +25,22 @@ var facing_right: bool = true
 
 
 func _physics_process(_delta: float) -> void:
+	hp-=0.1
+	print(str(hp))
 	var input_vector := Input.get_vector("left", "right", "up", "down")
-	
+	if input_vector != Vector2.ZERO:
+		if current_terrain==Terrain.GROUND: 
+			GroundSpeed_Coefficient+=0.005
+		if current_terrain==Terrain.WATER: 
+			SwimmingSpeed_Coefficient+=0.005
 	if input_vector.x > 0:
 		facing_right = true
 	elif input_vector.x < 0:
 		facing_right = false
-	
-	velocity = input_vector * SPEED
+	if current_terrain==Terrain.GROUND:
+		velocity = input_vector * GROUNDSPEED
+	elif current_terrain==Terrain.WATER:
+		velocity = input_vector * SWIMMINGSPEED
 	move_and_slide()
 	check_terrain()
 	
@@ -72,8 +81,8 @@ func check_terrain():
 			current_terrain = Terrain.WATER
 
 func evolution( ):
-	SPEED += 5 * Speed_Coefficient
-	SWIMMINGSPEED += 5 * Swimming_Coefficient
+	GROUNDSPEED *= GroundSpeed_Coefficient
+	SWIMMINGSPEED *= SwimmingSpeed_Coefficient
 	hp += 5 * hp_Coefficient
 	damage += 5 * damage_Coefficient
 
