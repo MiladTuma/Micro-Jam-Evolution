@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://3lms8jd3k1jl"]
+
+[ext_resource type="Script" uid="uid://b6y18xmkantup" path="res://Entities/Player/player.gd" id="1_3uyv8"]
+[ext_resource type="Texture2D" uid="uid://yg4jiihgmnp0" path="res://Entities/Player/Sprites/Frog animations.png" id="2_3uyv8"]
+[ext_resource type="Texture2D" uid="uid://cswco6xyhw7bu" path="res://Entities/Player/Sprites/Blue Slime.png" id="2_lu8i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn0bi"]
+size = Vector2(13, 6)
+
+[sub_resource type="Animation" id="Animation_3uyv8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frog Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frog Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lu8i8"]
+resource_name = "jump_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frog Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frog Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tekja"]
+resource_name = "jump_right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frog Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frog Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.39999998),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5c2io"]
+resource_name = "stand_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frog Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_4wf4l"]
+resource_name = "stand_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frog Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01a4e"]
+_data = {
+&"RESET": SubResource("Animation_3uyv8"),
+&"jump_left": SubResource("Animation_lu8i8"),
+&"jump_right": SubResource("Animation_tekja"),
+&"stand_left": SubResource("Animation_5c2io"),
+&"stand_right": SubResource("Animation_4wf4l")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=1335795623 node_paths=PackedStringArray("animation_sprites", "animation_player")]
+script = ExtResource("1_3uyv8")
+animation_sprites = NodePath("Frog Sprite")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Froh Shadow" type="Sprite2D" parent="." unique_id=174137034]
+modulate = Color(1, 1, 1, 0.11764706)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 3)
+scale = Vector2(0.48249894, 0.48249894)
+texture = ExtResource("2_lu8i8")
+
+[node name="Frog Sprite" type="Sprite2D" parent="." unique_id=91860524]
+texture = ExtResource("2_3uyv8")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1449579038]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_dn0bi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1339166879]
+libraries/ = SubResource("AnimationLibrary_01a4e")
