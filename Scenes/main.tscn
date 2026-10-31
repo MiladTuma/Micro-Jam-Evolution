@@ -9,33 +9,19 @@ texture = ExtResource("1_bo1nx")
 1:0/0 = 0
 2:0/0 = 0
 4:0/0 = 0
-4:0/0/custom_data_0 = 1
-5:0/0 = 0
-5:0/0/custom_data_0 = 1
-6:0/0 = 0
-6:0/0/custom_data_0 = 1
 5:0/0 = 0
 6:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
 4:1/0 = 0
-4:1/0/custom_data_0 = 1
 5:1/0 = 0
 5:1/0/custom_data_0 = 1
-6:1/0 = 0
-6:1/0/custom_data_0 = 1
-5:1/0 = 0
 6:1/0 = 0
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
 4:2/0 = 0
-4:2/0/custom_data_0 = 1
-5:2/0 = 0
-5:2/0/custom_data_0 = 1
-6:2/0 = 0
-6:2/0/custom_data_0 = 1
 5:2/0 = 0
 6:2/0 = 0
 0:3/0 = 0
@@ -53,8 +39,6 @@ texture = ExtResource("1_bo1nx")
 [sub_resource type="TileSet" id="TileSet_p2u1m"]
 custom_data_layer_0/name = "terrain"
 custom_data_layer_0/type = 2
-
-[sub_resource type="TileSet" id="TileSet_p2u1m"]
 sources/0 = SubResource("TileSetAtlasSource_bo1nx")
 
 [node name="Main" type="Node2D" unique_id=880462236]
@@ -64,9 +48,5 @@ tile_map_data = PackedByteArray("AAAGAAAAAAACAAEAAAAGAAEAAAACAAIAAAAFAAEAAAAEAAA
 tile_set = SubResource("TileSet_p2u1m")
 
 [node name="Player" parent="." unique_id=1335795623 node_paths=PackedStringArray("tile_map") instance=ExtResource("1_jjgbg")]
-tile_map_data = PackedByteArray("AAACAAIAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAADAAIAAAABAAEAAAACAAEAAAABAAAAAAADAAEAAAABAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAEAAAAEAAMAAAACAAEAAAAEAAQAAAACAAIAAAADAAQAAAABAAIAAAACAAQAAAABAAIAAAABAAQAAAAAAAIAAAABAAMAAAAAAAEAAAABAAIAAAAAAAEAAAABAAEAAAAAAAAAAAAFAAQAAAAFAAEAAAAFAAMAAAAFAAEAAAAFAAIAAAAFAAEAAAAFAAEAAAAFAAEAAAAGAAIAAAAFAAEAAAAGAAMAAAAFAAEAAAAGAAQAAAAFAAEAAAAGAAEAAAAFAAEAAAA=")
-tile_set = SubResource("TileSet_p2u1m")
-
-[node name="Player" parent="." unique_id=1335795623 instance=ExtResource("1_jjgbg")]
-position = Vector2(143, 27)
+position = Vector2(124, 26)
 tile_map = NodePath("../TileMapLayer")
