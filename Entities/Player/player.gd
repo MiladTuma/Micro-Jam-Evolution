@@ -6,7 +6,7 @@ var GROUNDSPEED : float = 20
 var SWIMMINGSPEED : float = 20
 @export var tile_map: TileMapLayer 
 @export var shadow: Sprite2D
-
+@export var sprite: Sprite2D
 
 enum Terrain {
 	GROUND,
@@ -26,25 +26,31 @@ var isJumping: bool = false
 var facing_right: bool = true
 
 var input_vector := Input.get_vector("left", "right", "up", "down")
+
 func _physics_process(_delta: float) -> void:
 	hp-=0.1
 	print(str(hp))
-	var input_vector := Input.get_vector("left", "right", "up", "down")
+	input_vector = Input.get_vector("left", "right", "up", "down")
+	
 	if input_vector != Vector2.ZERO:
 		if current_terrain==Terrain.GROUND: 
 			GroundSpeed_Coefficient+=0.005
 		if current_terrain==Terrain.WATER: 
 			SwimmingSpeed_Coefficient+=0.005
-	input_vector = Input.get_vector("left", "right", "up", "down")
 	
 	if input_vector.x > 0:
 		facing_right = true
 	elif input_vector.x < 0:
 		facing_right = false
+	
 	if current_terrain==Terrain.GROUND:
 		velocity = input_vector * GROUNDSPEED
+		sprite.z_index = 40
+		shadow.z_index = 25
 	elif current_terrain==Terrain.WATER:
 		velocity = input_vector * SWIMMINGSPEED
+		sprite.z_index = 10
+		shadow.z_index = 40
 	move_and_slide()
 	check_terrain()
 	
@@ -62,13 +68,6 @@ func _physics_process(_delta: float) -> void:
 	if input_vector != Vector2.ZERO and not isJumping:
 		start_jump()
 
-	if current_terrain == Terrain.WATER:
-		z_index = 10
-		shadow.z_index = 40
-	elif current_terrain == Terrain.GROUND:
-		z_index = 40
-		shadow.z_index = 10
-
 var current_terrain: Terrain = Terrain.GROUND
 
 func check_terrain():
@@ -85,17 +84,9 @@ func check_terrain():
 		1:
 			current_terrain = Terrain.WATER
 
-func evolution( ):
+func evolution():
 	GROUNDSPEED *= GroundSpeed_Coefficient
 	SWIMMINGSPEED *= SwimmingSpeed_Coefficient
-func evolution():
-	SPEED += 5 * Speed_Coefficient
-	SWIMMINGSPEED += 5 * Swimming_Coefficient
-	hp += 5 * hp_Coefficient
-	damage += 5 * damage_Coefficient
-
-
-
 
 func start_jump() -> void:
 	isJumping = true
