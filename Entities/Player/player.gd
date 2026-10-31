@@ -5,6 +5,8 @@ extends CharacterBody2D
 var GROUNDSPEED : float = 20
 var SWIMMINGSPEED : float = 20
 @export var tile_map: TileMapLayer 
+@export var shadow: Sprite2D
+
 
 enum Terrain {
 	GROUND,
@@ -23,7 +25,7 @@ var poisonResistance : float
 var isJumping: bool = false
 var facing_right: bool = true
 
-
+var input_vector := Input.get_vector("left", "right", "up", "down")
 func _physics_process(_delta: float) -> void:
 	hp-=0.1
 	print(str(hp))
@@ -33,6 +35,8 @@ func _physics_process(_delta: float) -> void:
 			GroundSpeed_Coefficient+=0.005
 		if current_terrain==Terrain.WATER: 
 			SwimmingSpeed_Coefficient+=0.005
+	input_vector = Input.get_vector("left", "right", "up", "down")
+	
 	if input_vector.x > 0:
 		facing_right = true
 	elif input_vector.x < 0:
@@ -59,10 +63,11 @@ func _physics_process(_delta: float) -> void:
 		start_jump()
 
 	if current_terrain == Terrain.WATER:
-		print("On the watter")
-		
+		z_index = 10
+		shadow.z_index = 40
 	elif current_terrain == Terrain.GROUND:
-		print("on the ground")
+		z_index = 40
+		shadow.z_index = 10
 
 var current_terrain: Terrain = Terrain.GROUND
 
@@ -83,6 +88,9 @@ func check_terrain():
 func evolution( ):
 	GROUNDSPEED *= GroundSpeed_Coefficient
 	SWIMMINGSPEED *= SwimmingSpeed_Coefficient
+func evolution():
+	SPEED += 5 * Speed_Coefficient
+	SWIMMINGSPEED += 5 * Swimming_Coefficient
 	hp += 5 * hp_Coefficient
 	damage += 5 * damage_Coefficient
 
@@ -91,17 +99,17 @@ func evolution( ):
 
 func start_jump() -> void:
 	isJumping = true
-
+	
 	if facing_right:
 		animation_player.play("jump_right")
 	else:
 		animation_player.play("jump_left")
-
+	
 	await animation_player.animation_finished
-
-	if facing_right:
-		animation_sprites.frame = 0
-	else:
-		animation_sprites.frame = 1
-
+	if input_vector == Vector2.ZERO:
+		if facing_right:
+			animation_sprites.frame = 0
+		else:
+			animation_sprites.frame = 1
+	
 	isJumping = false
