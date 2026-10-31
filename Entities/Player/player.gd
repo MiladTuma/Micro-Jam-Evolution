@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 # Variablen die wir ändern könnten für Evolution
+
 var SPEED : int = 100
 var SWIMMINGSPEED : int = 50
 @export var tile_map: TileMapLayer 
@@ -9,6 +10,12 @@ enum Terrain {
 	GROUND, 
 	WATER
 }
+var hp : int = 100
+var damage : int = 10
+var Speed_Coefficient : int
+var Swimming_Coefficient : int
+var hp_Coefficient : int 
+var damage_Coefficient : int 
 
 
 func _physics_process(_delta: float) -> void:
@@ -43,3 +50,9 @@ func check_terrain():
 			current_terrain = Terrain.GROUND
 		1:
 			current_terrain = Terrain.WATER
+
+func evolution( ):
+	SPEED += 5 * Speed_Coefficient
+	SWIMMINGSPEED += 5 * Swimming_Coefficient
+	hp += 5 * hp_Coefficient
+	damage += 5 * damage_Coefficient
