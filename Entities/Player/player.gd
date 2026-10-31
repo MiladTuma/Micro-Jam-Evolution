@@ -53,7 +53,7 @@ func _physics_process(_delta: float) -> void:
 		print("On the watter")
 		
 	elif current_terrain == Terrain.GROUND:
-		print("on the ground")
+		print("on the ground" )
 
 var current_terrain: Terrain = Terrain.GROUND
 

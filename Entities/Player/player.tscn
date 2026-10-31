@@ -129,6 +129,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1335795623 node_paths=PackedStringArray("animation_sprites", "animation_player")]
+collision_mask = 4
 script = ExtResource("1_3uyv8")
 animation_sprites = NodePath("Frog Sprite")
 animation_player = NodePath("AnimationPlayer")
