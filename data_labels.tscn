@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cpydqiyp1ptky"]
+
+[ext_resource type="Script" path="res://data_labels.gd" id="1_kir8x"]
+
+[node name="Data Labels" type="CanvasLayer" unique_id=1059430108 node_paths=PackedStringArray("data_text")]
+script = ExtResource("1_kir8x")
+data_text = NodePath("DataLabel")
+
+[node name="DataLabel" type="Label" parent="." unique_id=482720282]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Health:
+Ground Speed:
+Swimming Speed;
+Poison Resistance:"
