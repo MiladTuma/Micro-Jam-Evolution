@@ -104,6 +104,8 @@ func evolution():
 	GROUNDSPEED *= ground_speed_coefficient
 	SWIMMINGSPEED *= swimming_speed_coefficient
 	poison_resistance *= poison_resistance_coefficient
+	max_health - 5
+	
 	
 	ground_speed_coefficient = original_ground_speed * poison_resistance
 	swimming_speed_coefficient = original_swimming_speed * poison_resistance
@@ -116,6 +118,7 @@ func evolution():
 	# Teste Ob die Vars nicht zu hoch oder zu tief sind.
 	GROUNDSPEED = clampf(GROUNDSPEED, 5, 200)
 	SWIMMINGSPEED = clampf(SWIMMINGSPEED, 5, 200)
+	max_health = clampf(SWIMMINGSPEED, 5, 200)
 
 func learn_evolution(delta):
 	if input_vector != Vector2.ZERO:
@@ -125,12 +128,7 @@ func learn_evolution(delta):
 			swimming_speed_coefficient += 0.3 * delta * poison_resistance
 	
 	poison_resistance_coefficient -= 0.01 * delta
-	if current_terrain == Terrain.WATER:
-		print("On the watter")
-		
-	elif current_terrain == Terrain.GROUND:
-		print("on the ground" )
-		
+	
 	if Input.is_action_just_pressed("eat"):
 		
 			if flies_in_mouth.size() > 0:
@@ -140,7 +138,7 @@ func learn_evolution(delta):
 				flies_in_mouth.remove_at(0) 
 		
 		
-				current_health += 5 
+				max_health += 5 
 				print("nom nom ")
 
 var current_terrain: Terrain = Terrain.GROUND
@@ -187,7 +185,3 @@ func _on_mouth_area_body_entered(body: Node2D) -> void:
 func _on_mouth_area_body_exited(body: Node2D) -> void:
 	if flies_in_mouth.has(body):
 		flies_in_mouth.erase(body)
-
-
-
-	
