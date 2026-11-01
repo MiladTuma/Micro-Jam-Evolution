@@ -138,6 +138,7 @@ func learn_evolution(delta):
 		
 		
 				hp_coefficient += 0.2
+				current_health +=5
 				print("nom nom ")
 
 var current_terrain: Terrain = Terrain.GROUND
