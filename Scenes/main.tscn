@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://3lms8jd3k1jl" path="res://Entities/Player/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bnku3jb5gnckl" path="res://Entities/Snake/snake.tscn" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://276cfrt1hyfp" path="res://Scenes/textbox.gd" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://y8knp8h4k6h4" path="res://data_labels.tscn" id="5_kry3j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_bo1nx")
@@ -140,3 +141,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Train your skills, die, evolve, continue with the next generation"
+
+[node name="Data Labels" parent="." unique_id=1059430108 node_paths=PackedStringArray("player") instance=ExtResource("5_kry3j")]
+player = NodePath("../Player")

@@ -11,20 +11,11 @@ var SWIMMINGSPEED : float = 20
 
 func _ready() -> void:
 	add_to_group("player")
-var GROUNDSPEED : float = 20
-var SWIMMINGSPEED : float = 20
 
 enum Terrain {
 	GROUND,
 	WATER
 }
-var hp : float = 100
-var damage : float = 10
-var GroundSpeed_Coefficient : float = 0.8
-var SwimmingSpeed_Coefficient : float = 0.8
-var hp_Coefficient : float
-var damage_Coefficient : float
-var poisonResistance : float
 
 @export var animation_sprites: Sprite2D
 @export var animation_player: AnimationPlayer
@@ -35,15 +26,7 @@ var facing_right: bool = true
 var input_vector := Input.get_vector("left", "right", "up", "down")
 
 func _physics_process(_delta: float) -> void:
-	hp-=0.1
-	print(str(hp))
 	input_vector = Input.get_vector("left", "right", "up", "down")
-	
-	if input_vector != Vector2.ZERO:
-		if current_terrain==Terrain.GROUND: 
-			GroundSpeed_Coefficient+=0.005
-		if current_terrain==Terrain.WATER: 
-			SwimmingSpeed_Coefficient+=0.005
 	
 	if input_vector.x > 0:
 		facing_right = true
@@ -141,23 +124,6 @@ func learn_evolution(delta):
 	
 	poison_resistance_coefficient -= 0.01 * delta
 
-func start_jump() -> void:
-	isJumping = true
-	
-	if facing_right:
-		animation_player.play("jump_right")
-	else:
-		animation_player.play("jump_left")
-	
-	await animation_player.animation_finished
-	if input_vector == Vector2.ZERO:
-		if facing_right:
-			animation_sprites.frame = 0
-		else:
-			animation_sprites.frame = 1
-	
-	isJumping = false
-
 var current_terrain: Terrain = Terrain.GROUND
 
 func check_terrain():
@@ -173,10 +139,6 @@ func check_terrain():
 			current_terrain = Terrain.GROUND
 		1:
 			current_terrain = Terrain.WATER
-
-func evolution():
-	GROUNDSPEED *= GroundSpeed_Coefficient
-	SWIMMINGSPEED *= SwimmingSpeed_Coefficient
 
 func start_jump() -> void:
 	isJumping = true
