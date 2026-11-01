@@ -21,7 +21,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		is_fleeing = false
 		player_ref = null 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if is_fleeing and player_ref != null:
 		

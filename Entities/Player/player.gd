@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
 
 var is_evolutioning : bool = false
 
-var max_health : float = 30
+var max_health : float = 50
 var current_health: float = max_health:
 	set(value):
 		current_health = max(0, value)
@@ -119,9 +119,9 @@ func evolution():
 	is_evolutioning = false
 	
 	# Teste Ob die Vars nicht zu hoch oder zu tief sind.
-	GROUNDSPEED = clampf(GROUNDSPEED, 5, 200)
-	SWIMMINGSPEED = clampf(SWIMMINGSPEED, 5, 200)
-	max_health = clampf(SWIMMINGSPEED, 12.5, 100)
+	GROUNDSPEED = clampf(GROUNDSPEED, 10, 200)
+	SWIMMINGSPEED = clampf(SWIMMINGSPEED, 10, 200)
+	max_health = clampf(max_health, 30, 300)
 
 func learn_evolution(delta):
 	if input_vector != Vector2.ZERO:
