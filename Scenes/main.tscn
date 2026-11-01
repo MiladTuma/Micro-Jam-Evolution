@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://kjg2t5thhseq" path="res://Tilemap/Tilemap Frog Swamp.png" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://3lms8jd3k1jl" path="res://Entities/Player/player.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://d4j0ot2cugjji" path="res://Entities/Snake/snake.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bnku3jb5gnckl" path="res://Entities/Snake/snake.tscn" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://276cfrt1hyfp" path="res://Scenes/textbox.gd" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://y8knp8h4k6h4" path="res://data_labels.tscn" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://cneqvv62fifg6" path="res://Scenes/fly_spawner.gd" id="6_21xkr"]

@@ -86,7 +86,7 @@ var ground_speed_coefficient : float = original_ground_speed
 const original_swimming_speed:  float = 0.3
 var swimming_speed_coefficient : float = original_swimming_speed
 
-const original_hp_coefficient : float = 1
+const original_hp_coefficient : float = 0.2
 var hp_coefficient : float = 0.8
 
 var damage_Coefficient : float
