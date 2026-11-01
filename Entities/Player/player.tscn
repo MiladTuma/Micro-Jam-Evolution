@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b6y18xmkantup" path="res://Entities/Player/player.gd" id="1_3uyv8"]
 [ext_resource type="Texture2D" uid="uid://yg4jiihgmnp0" path="res://Entities/Player/Sprites/Frog animations.png" id="2_3uyv8"]
 [ext_resource type="Texture2D" uid="uid://cswco6xyhw7bu" path="res://Entities/Player/Sprites/Blue Slime.png" id="2_lu8i8"]
+[ext_resource type="AudioStream" uid="uid://cujmg8oqorakn" path="res://Sounds/freesound_community-restart-84727.mp3" id="4_tekja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn0bi"]
 size = Vector2(13, 6)
@@ -178,7 +179,6 @@ position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_ubtcc")
 
 [node name="Water moving Sound" type="AudioStreamPlayer" parent="." unique_id=1232452262]
-unique_name_in_owner = true
 stream = SubResource("AudioStreamMP3_lu8i8")
 volume_db = -40.0
 autoplay = true
@@ -192,6 +192,11 @@ autoplay = true
 stream = SubResource("AudioStreamMP3_5c2io")
 volume_db = -25.0
 autoplay = true
+
+[node name="Restart" type="AudioStreamPlayer" parent="." unique_id=904193656]
+unique_name_in_owner = true
+stream = ExtResource("4_tekja")
+volume_db = -15.0
 
 [connection signal="body_entered" from="MouthArea" to="." method="_on_mouth_area_body_entered"]
 [connection signal="body_exited" from="MouthArea" to="." method="_on_mouth_area_body_exited"]
