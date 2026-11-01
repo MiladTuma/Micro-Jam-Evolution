@@ -59,7 +59,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if input_vector != Vector2.ZERO and not isJumping:
 		start_jump()
-
+	
 func _process(delta: float) -> void:
 	current_health -= (5 * poison_resistance) * delta
 	

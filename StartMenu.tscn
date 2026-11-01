@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://nbfk8aqgi5q8"]
+
+[ext_resource type="Script" uid="uid://bgrk8ysswruks" path="res://start_menu.gd" id="1_d3352"]
+
+[node name="Control" type="Control" unique_id=1558851095]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_d3352")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=413642128]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=565882486]
+layout_mode = 2
+text = "Select Controls"
+
+[node name="on_pc_button" type="Button" parent="VBoxContainer" unique_id=1431186739]
+layout_mode = 2
+text = "Computer"
+
+[node name="on_mobile_button" type="Button" parent="VBoxContainer" unique_id=1448025272]
+layout_mode = 2
+text = "Phone"
+
+[connection signal="pressed" from="VBoxContainer/on_pc_button" to="." method="_on_on_pc_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/on_mobile_button" to="." method="_on_on_mobile_button_pressed"]
