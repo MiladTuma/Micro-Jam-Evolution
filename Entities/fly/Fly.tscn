@@ -34,9 +34,9 @@ script = ExtResource("1_cdmbg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1142452851]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_bo1nx")
-frame_progress = 0.7946846
+frame_progress = 0.5088677
 
-[node name="Area2D" type="Area2D" parent="." unique_id=902770416]
+[node name="Area2D" type="Area2D" parent="." unique_id=902770416 groups=["flies", "player"]]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2014869005]
