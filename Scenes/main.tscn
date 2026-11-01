@@ -197,11 +197,12 @@ position = Vector2(330, 98)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_dcmcw")
 
-[node name="SnakeSpawner" type="Node2D" parent="." unique_id=2016708121 node_paths=PackedStringArray("tile_map")]
+[node name="SnakeSpawner" type="Node2D" parent="." unique_id=2016708121 node_paths=PackedStringArray("tile_map", "water_tile_map")]
 position = Vector2(19, 106)
 script = ExtResource("8_344ge")
 snake_scene = ExtResource("3_8gbba")
 tile_map = NodePath("../TileMapLayer")
+water_tile_map = NodePath("../TileMapLayerBottom")
 max_snakes = 10
 
 [node name="Timer" type="Timer" parent="SnakeSpawner" unique_id=1215365454]
