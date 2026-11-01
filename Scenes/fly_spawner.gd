@@ -27,7 +27,7 @@ func calculate_spawn_area() -> void:
 	
 	spawn_area = Rect2(start_pos, end_pos - start_pos)
 	
-	print("Границы карты для спавна: ", spawn_area)
+	
 
 func _on_timer_timeout() -> void:
 	if get_tree().get_nodes_in_group("flies").size() >= max_flies:
