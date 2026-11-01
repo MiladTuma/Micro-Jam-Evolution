@@ -54,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 		start_jump()
 
 func _process(delta: float) -> void:
-	current_health -= (3 * poison_resistance) * delta
+	current_health -= (5 * poison_resistance) * delta
 	
 	if current_health == 0 and not is_evolutioning:
 		evolution()
@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 
 var is_evolutioning : bool = false
 
-var max_health : float = 10
+var max_health : float = 30
 var current_health: float = max_health:
 	set(value):
 		current_health = max(0, value)
@@ -98,8 +98,8 @@ func evolution():
 	SWIMMINGSPEED *= swimming_speed_coefficient
 	poison_resistance *= poison_resistance_coefficient
 	
-	ground_speed_coefficient = original_ground_speed
-	swimming_speed_coefficient = original_swimming_speed
+	ground_speed_coefficient = original_ground_speed * poison_resistance
+	swimming_speed_coefficient = original_swimming_speed * poison_resistance
 	poison_resistance_coefficient = original_poison_resistance
 	
 	current_health = max_health
@@ -113,11 +113,11 @@ func evolution():
 func learn_evolution(delta):
 	if input_vector != Vector2.ZERO:
 		if current_terrain==Terrain.GROUND:
-			ground_speed_coefficient += 0.01 * delta
+			ground_speed_coefficient += 0.3 * delta * poison_resistance
 		if current_terrain==Terrain.WATER: 
-			swimming_speed_coefficient += 0.01 * delta
+			swimming_speed_coefficient += 0.3 * delta * poison_resistance
 	
-	poison_resistance_coefficient -= 0.001 * delta
+	poison_resistance_coefficient -= 0.01 * delta
 
 func start_jump() -> void:
 	isJumping = true
