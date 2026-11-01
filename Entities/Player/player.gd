@@ -101,6 +101,9 @@ var poison_resistance: float = 1:
 
 func evolution():
 	is_evolutioning = true
+	
+	%Restart.play()
+	
 	GROUNDSPEED *= ground_speed_coefficient
 	SWIMMINGSPEED *= swimming_speed_coefficient
 	poison_resistance *= poison_resistance_coefficient
