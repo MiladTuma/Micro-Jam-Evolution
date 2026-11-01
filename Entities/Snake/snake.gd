@@ -10,12 +10,9 @@ func _ready() -> void:
 	
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player_ref == null:
 		return
-
-	
-	
 
 	if player_ref.current_terrain == Player.Terrain.GROUND:
 		var direction = (player_ref.global_position - global_position).normalized()
