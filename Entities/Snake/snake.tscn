@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://d4j0ot2cugjji"]
 
-[ext_resource type="Texture2D" path="res://Entities/Snake/Snake_animation.png" id="1_e0ke3"]
-[ext_resource type="Script" path="res://Entities/Snake/snake.gd" id="1_o23ox"]
+[ext_resource type="Texture2D" uid="uid://deya2ik0f3oee" path="res://Entities/Snake/Snake_animation.png" id="1_e0ke3"]
+[ext_resource type="Script" uid="uid://cgc0fw01fgvtb" path="res://Entities/Snake/snake.gd" id="1_o23ox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ke3"]
 size = Vector2(11, 1.625)
 
 [node name="Snake" type="CharacterBody2D" unique_id=579168960]
+z_index = 67
 script = ExtResource("1_o23ox")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=124710841]

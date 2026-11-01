@@ -2,9 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://kjg2t5thhseq" path="res://Tilemap/Tilemap Frog Swamp.png" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://3lms8jd3k1jl" path="res://Entities/Player/player.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://bnku3jb5gnckl" path="res://Entities/Snake/snake.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://d4j0ot2cugjji" path="res://Entities/Snake/snake.tscn" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://276cfrt1hyfp" path="res://Scenes/textbox.gd" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://y8knp8h4k6h4" path="res://data_labels.tscn" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://cneqvv62fifg6" path="res://Scenes/fly_spawner.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://8rm85i532403" path="res://Entities/fly/Fly.tscn" id="7_6bp64"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_bo1nx")
@@ -144,9 +146,10 @@ text = "Train your skills, die, evolve, continue with the next generation"
 
 [node name="Data Labels" parent="." unique_id=1059430108 node_paths=PackedStringArray("player") instance=ExtResource("5_kry3j")]
 player = NodePath("../Player")
+
 [node name="FlySpawner" type="Node2D" parent="." unique_id=1363874512 node_paths=PackedStringArray("tile_map")]
-script = ExtResource("4_jjvhh")
-fly_scene = ExtResource("3_8gbba")
+script = ExtResource("6_21xkr")
+fly_scene = ExtResource("7_6bp64")
 tile_map = NodePath("../TileMapLayer")
 
 [node name="Timer" type="Timer" parent="FlySpawner" unique_id=1057152892]

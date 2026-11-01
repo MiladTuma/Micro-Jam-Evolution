@@ -140,7 +140,7 @@ func learn_evolution(delta):
 				flies_in_mouth.remove_at(0) 
 		
 		
-				hp += 5 
+				current_health += 5 
 				print("nom nom ")
 
 var current_terrain: Terrain = Terrain.GROUND
