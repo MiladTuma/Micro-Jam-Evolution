@@ -87,7 +87,7 @@ const original_swimming_speed:  float = 0.3
 var swimming_speed_coefficient : float = original_swimming_speed
 
 const original_hp_coefficient : float = 1
-var hp_coefficient : float = 1
+var hp_coefficient : float = 0.8
 
 var damage_Coefficient : float
 
@@ -104,11 +104,11 @@ func evolution():
 	GROUNDSPEED *= ground_speed_coefficient
 	SWIMMINGSPEED *= swimming_speed_coefficient
 	poison_resistance *= poison_resistance_coefficient
-	max_health - 5
+
 	
-	
-	ground_speed_coefficient = original_ground_speed * poison_resistance
-	swimming_speed_coefficient = original_swimming_speed * poison_resistance
+	hp_coefficient = original_hp_coefficient
+	ground_speed_coefficient = original_ground_speed
+	swimming_speed_coefficient = original_swimming_speed
 	poison_resistance_coefficient = original_poison_resistance
 	
 	current_health = max_health
@@ -118,15 +118,14 @@ func evolution():
 	# Teste Ob die Vars nicht zu hoch oder zu tief sind.
 	GROUNDSPEED = clampf(GROUNDSPEED, 5, 200)
 	SWIMMINGSPEED = clampf(SWIMMINGSPEED, 5, 200)
-	max_health = clampf(SWIMMINGSPEED, 5, 200)
+	max_health = clampf(SWIMMINGSPEED, 12.5, 100)
 
 func learn_evolution(delta):
 	if input_vector != Vector2.ZERO:
 		if current_terrain==Terrain.GROUND:
-			ground_speed_coefficient += 0.3 * delta * poison_resistance
+			ground_speed_coefficient += 0.2 * delta
 		if current_terrain==Terrain.WATER: 
-			swimming_speed_coefficient += 0.3 * delta * poison_resistance
-	
+			swimming_speed_coefficient += 0.2 * delta
 	poison_resistance_coefficient -= 0.01 * delta
 	
 	if Input.is_action_just_pressed("eat"):
@@ -138,7 +137,7 @@ func learn_evolution(delta):
 				flies_in_mouth.remove_at(0) 
 		
 		
-				max_health += 5 
+				hp_coefficient += 0.2
 				print("nom nom ")
 
 var current_terrain: Terrain = Terrain.GROUND
