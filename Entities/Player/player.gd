@@ -187,3 +187,10 @@ func _on_mouth_area_body_entered(body: Node2D) -> void:
 func _on_mouth_area_body_exited(body: Node2D) -> void:
 	if flies_in_mouth.has(body):
 		flies_in_mouth.erase(body)
+
+func take_damage(amount: int) -> void:
+	current_health -= amount
+	
+
+
+	
