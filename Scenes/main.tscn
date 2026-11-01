@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://y8knp8h4k6h4" path="res://data_labels.tscn" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://cneqvv62fifg6" path="res://Scenes/fly_spawner.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://8rm85i532403" path="res://Entities/fly/Fly.tscn" id="7_6bp64"]
+[ext_resource type="Script" uid="uid://bgmrefqwn38wb" path="res://Scenes/snake_spawner.gd" id="8_344ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_bo1nx")
@@ -89,6 +90,12 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3jpf"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8002w"]
+size = Vector2(20, 212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmcw"]
+size = Vector2(359, 20)
+
 [node name="Main" type="Node2D" unique_id=880462236]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1978633104]
@@ -105,8 +112,9 @@ z_index = 30
 tile_map_data = PackedByteArray("AAAHAAAAAAAFAAEAAAAHAAEAAAAFAAEAAAAGAAIAAAAFAAEAAAAGAAMAAAAFAAEAAAAGAAQAAAAFAAEAAAAHAAQAAAAFAAEAAAAIAAQAAAAFAAEAAAAJAAQAAAAFAAEAAAAJAAMAAAAFAAEAAAAJAAIAAAAFAAEAAAAHAAUAAAAFAAEAAAAIAAUAAAAFAAEAAAAJAAUAAAAFAAEAAAAKAAUAAAAFAAEAAAALAAUAAAAFAAEAAAALAAQAAAAFAAEAAAALAAMAAAAFAAEAAAALAAIAAAAFAAEAAAAKAAMAAAAFAAEAAAAKAAQAAAAFAAEAAAAKAAIAAAAFAAEAAAAGAAUAAAAFAAEAAAAFAAUAAAAFAAEAAAAFAAYAAAAFAAEAAAAFAAcAAAAFAAEAAAAFAAgAAAAFAAEAAAAFAAkAAAAFAAEAAAAFAAoAAAAFAAEAAAAEAAoAAAAFAAEAAAAEAAsAAAAFAAEAAAAFAAsAAAAFAAEAAAAGAAsAAAAFAAEAAAAHAAsAAAAFAAEAAAAIAAsAAAAFAAEAAAAJAAsAAAAFAAEAAAAKAAsAAAAFAAEAAAAKAAoAAAAFAAEAAAAKAAkAAAAFAAEAAAAJAAkAAAAFAAEAAAAIAAkAAAAFAAEAAAAHAAkAAAAFAAEAAAAGAAkAAAAFAAEAAAAGAAoAAAAFAAEAAAAHAAoAAAAFAAEAAAAIAAoAAAAFAAEAAAAJAAoAAAAFAAEAAAAKAAgAAAAFAAEAAAAKAAcAAAAFAAEAAAAKAAYAAAAFAAEAAAAJAAYAAAAFAAEAAAAIAAYAAAAFAAEAAAAHAAYAAAAFAAEAAAAGAAYAAAAFAAEAAAAGAAcAAAAFAAEAAAAGAAgAAAAFAAEAAAAIAAEAAAAFAAEAAAALAAAAAAACAAAAAAALAAEAAAACAAIAAAAKAAEAAAABAAIAAAAJAAEAAAAAAAIAAAAIAAAAAAAAAAIAAAAJAAAAAAAGAAAAAAAKAAAAAAAEAAIAAAAMAAAAAAAAAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAAAAAAGAAIAAAAMAAEAAAAAAAEAAAAMAAIAAAAAAAEAAAAMAAMAAAAAAAEAAAAMAAQAAAAAAAEAAAAMAAUAAAAAAAEAAAAMAAYAAAAGAAIAAAALAAYAAAAAAAAAAAALAAcAAAAAAAEAAAALAAgAAAAAAAEAAAALAAkAAAAAAAEAAAALAAoAAAAAAAEAAAALAAsAAAAAAAEAAAADAAsAAAACAAEAAAADAAoAAAACAAEAAAAEAAgAAAACAAEAAAAEAAcAAAACAAEAAAAEAAYAAAACAAEAAAAEAAUAAAACAAEAAAAFAAMAAAACAAEAAAAFAAIAAAACAAEAAAAGAAAAAAACAAEAAAAGAAEAAAACAAIAAAAFAAEAAAAEAAAAAAAFAAQAAAACAAIAAAAEAAQAAAAEAAAAAAADAAkAAAAEAAAAAAAEAAkAAAACAAIAAAABAAgAAAAEAAAAAAACAAgAAAAGAAAAAAACAAkAAAAGAAIAAAABAAkAAAAEAAIAAAATAAgAAAAGAAIAAAATAAcAAAAGAAAAAAARAAgAAAAEAAIAAAAPAAYAAAAEAAIAAAAPAAQAAAAEAAAAAAASAAQAAAAGAAAAAAASAAcAAAAAAAIAAAASAAYAAAAAAAEAAAASAAUAAAAAAAEAAAAPAAUAAAACAAEAAAAQAAQAAAAFAAAAAAARAAQAAAAFAAAAAAASAAgAAAAFAAIAAAARAAcAAAAEAAEAAAARAAYAAAACAAAAAAAQAAYAAAABAAAAAAAQAAUAAAAFAAEAAAARAAUAAAAFAAEAAAAIAAIAAAACAAAAAAAIAAMAAAACAAIAAAAHAAMAAAAAAAIAAAAHAAIAAAAAAAAAAAAHAAcAAAAAAAAAAAAJAAcAAAACAAAAAAAJAAgAAAACAAIAAAAHAAgAAAAAAAIAAAAIAAgAAAABAAIAAAAIAAcAAAABAAAAAAADAAEAAAAGAAAAAAADAAIAAAAGAAEAAAADAAMAAAAGAAIAAAACAAMAAAAEAAIAAAACAAIAAAACAAAAAAABAAIAAAAEAAIAAAABAAEAAAAEAAAAAAACAAEAAAAFAAAAAAA=")
 tile_set = SubResource("TileSet_xcwl1")
 
-[node name="Snake" parent="." unique_id=579168960 instance=ExtResource("3_8gbba")]
+[node name="Snake" parent="." unique_id=579168960 node_paths=PackedStringArray("tile_map") groups=["flies", "player", "snakes"] instance=ExtResource("3_8gbba")]
 position = Vector2(19, 106)
+tile_map = NodePath("../TileMapLayer")
 
 [node name="Textbox" type="CanvasLayer" parent="." unique_id=557165725]
 script = ExtResource("4_jjvhh")
@@ -153,5 +161,49 @@ fly_scene = ExtResource("7_6bp64")
 tile_map = NodePath("../TileMapLayer")
 
 [node name="Timer" type="Timer" parent="FlySpawner" unique_id=1057152892]
+wait_time = 3.0
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1747549753]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1077408785]
+position = Vector2(-10, 91)
+shape = SubResource("RectangleShape2D_8002w")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=41360785]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1857745924]
+position = Vector2(160.5, -10)
+shape = SubResource("RectangleShape2D_dcmcw")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=132128698]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1984311787]
+position = Vector2(157, 202)
+shape = SubResource("RectangleShape2D_dcmcw")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=523385153]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=848381423]
+position = Vector2(330, 98)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_dcmcw")
+
+[node name="SnakeSpawner" type="Node2D" parent="." unique_id=2016708121 node_paths=PackedStringArray("tile_map")]
+position = Vector2(19, 106)
+script = ExtResource("8_344ge")
+snake_scene = ExtResource("3_8gbba")
+tile_map = NodePath("../TileMapLayer")
+max_snakes = 10
+
+[node name="Timer" type="Timer" parent="SnakeSpawner" unique_id=1215365454]
 wait_time = 3.0
 autostart = true

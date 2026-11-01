@@ -28,6 +28,7 @@ window/stretch/aspect="expand"
 
 player=""
 flies=""
+snakes=""
 
 [input]
 
