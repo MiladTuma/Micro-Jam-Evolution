@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 5.0
-@export var damage: int = 10
+@export var damage: int = 45
 @export var tile_map: TileMapLayer
 
 var player_ref: Player = null 
@@ -10,7 +10,7 @@ func _ready() -> void:
 	add_to_group("snakes")
 	player_ref = get_tree().get_first_node_in_group("player")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player_ref == null:
 		return
 
