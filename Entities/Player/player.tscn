@@ -129,11 +129,7 @@ _data = {
 &"stand_right": SubResource("Animation_4wf4l")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubtcc"]
-size = Vector2(13, 9)
-
 [node name="Player" type="CharacterBody2D" unique_id=1335795623 node_paths=PackedStringArray("shadow", "sprite", "animation_sprites", "animation_player")]
-collision_mask = 4
 script = ExtResource("1_3uyv8")
 shadow = NodePath("Frog Shadow")
 sprite = NodePath("Frog Sprite")
@@ -157,13 +153,3 @@ shape = SubResource("RectangleShape2D_dn0bi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1339166879]
 libraries/ = SubResource("AnimationLibrary_01a4e")
-
-[node name="MouthArea" type="Area2D" parent="." unique_id=441787252]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouthArea" unique_id=972205821]
-position = Vector2(0.5, -6.5)
-shape = SubResource("RectangleShape2D_ubtcc")
-
-[connection signal="body_entered" from="MouthArea" to="." method="_on_mouth_area_body_entered"]
-[connection signal="body_exited" from="MouthArea" to="." method="_on_mouth_area_body_exited"]

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://8rm85i532403"]
 
-[ext_resource type="Script" uid="uid://657o0cn3cj0j" path="res://Entities/fly/fly.gd" id="1_cdmbg"]
-[ext_resource type="Texture2D" uid="uid://dfndo80kpeq6o" path="res://Entities/fly/Fly_sprites/Fly1.png" id="1_k8vmk"]
-[ext_resource type="Texture2D" uid="uid://by1t4un6t1bj4" path="res://Entities/fly/Fly_sprites/Fly3.png" id="2_cdmbg"]
-[ext_resource type="Texture2D" uid="uid://ca6ebebpv3766" path="res://Entities/fly/Fly_sprites/frog_sit.png" id="3_5jlpg"]
+[ext_resource type="Script" path="res://Entities/fly/fly.gd" id="1_cdmbg"]
+[ext_resource type="Texture2D" path="res://Entities/fly/Fly_sprites/Fly1.png" id="1_k8vmk"]
+[ext_resource type="Texture2D" path="res://Entities/fly/Fly_sprites/Fly3.png" id="2_cdmbg"]
+[ext_resource type="Texture2D" path="res://Entities/fly/Fly_sprites/frog_sit.png" id="3_5jlpg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bo1nx"]
 animations = [{
@@ -34,10 +34,9 @@ script = ExtResource("1_cdmbg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1142452851]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_bo1nx")
+frame_progress = 0.7946846
 
-frame_progress = 0.5088677
-
-[node name="Area2D" type="Area2D" parent="." unique_id=902770416 groups=["flies", "player"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=902770416]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2014869005]

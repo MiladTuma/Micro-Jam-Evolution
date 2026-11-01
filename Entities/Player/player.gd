@@ -30,8 +30,6 @@ var isJumping: bool = false
 var facing_right: bool = true
 
 var input_vector := Input.get_vector("left", "right", "up", "down")
-var flies_in_mouth: Array[Node2D] = []
-
 
 func _physics_process(_delta: float) -> void:
 	hp-=0.1
@@ -74,24 +72,6 @@ func _physics_process(_delta: float) -> void:
 	if input_vector != Vector2.ZERO and not isJumping:
 		start_jump()
 
-	if current_terrain == Terrain.WATER:
-		print("On the watter")
-		
-	elif current_terrain == Terrain.GROUND:
-		print("on the ground" )
-		
-	if Input.is_action_just_pressed("eat"):
-		
-			if flies_in_mouth.size() > 0:
-		
-				var fly = flies_in_mouth[0]
-				fly.get_eaten()
-				flies_in_mouth.remove_at(0) 
-		
-		
-				hp += 5 
-				print("nom nom ")
-
 var current_terrain: Terrain = Terrain.GROUND
 
 func check_terrain():
@@ -128,19 +108,3 @@ func start_jump() -> void:
 			animation_sprites.frame = 1
 	
 	isJumping = false
-
-
-
-func _on_mouth_area_body_entered(body: Node2D) -> void:
-	if body.has_method("get_eaten"):
-		if not flies_in_mouth.has(body):
-			flies_in_mouth.append(body)
-
-
-func _on_mouth_area_body_exited(body: Node2D) -> void:
-	if flies_in_mouth.has(body):
-		flies_in_mouth.erase(body)
-
-
-
-	
