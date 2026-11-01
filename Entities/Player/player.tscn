@@ -129,9 +129,10 @@ _data = {
 &"stand_right": SubResource("Animation_4wf4l")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1335795623 node_paths=PackedStringArray("shadow", "animation_sprites", "animation_player")]
+[node name="Player" type="CharacterBody2D" unique_id=1335795623 node_paths=PackedStringArray("shadow", "sprite", "animation_sprites", "animation_player")]
 script = ExtResource("1_3uyv8")
 shadow = NodePath("Frog Shadow")
+sprite = NodePath("Frog Sprite")
 animation_sprites = NodePath("Frog Sprite")
 animation_player = NodePath("AnimationPlayer")
 
