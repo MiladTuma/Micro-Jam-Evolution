@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://kjg2t5thhseq" path="res://Tilemap/Tilemap Frog Swamp.png" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://3lms8jd3k1jl" path="res://Entities/Player/player.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://ivh51lvv8ir8" path="res://Entities/fly/Fly.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://8rm85i532403" path="res://Entities/fly/Fly.tscn" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://cneqvv62fifg6" path="res://Scenes/fly_spawner.gd" id="4_jjvhh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_bo1nx")
@@ -52,6 +53,11 @@ tile_set = SubResource("TileSet_p2u1m")
 position = Vector2(124, 26)
 tile_map = NodePath("../TileMapLayer")
 
-[node name="CharacterBody2D" parent="." unique_id=607701137 instance=ExtResource("3_8gbba")]
-unique_name_in_owner = true
-position = Vector2(210, 29)
+[node name="FlySpawner" type="Node2D" parent="." unique_id=1363874512 node_paths=PackedStringArray("tile_map")]
+script = ExtResource("4_jjvhh")
+fly_scene = ExtResource("3_8gbba")
+tile_map = NodePath("../TileMapLayer")
+
+[node name="Timer" type="Timer" parent="FlySpawner" unique_id=1057152892]
+wait_time = 3.0
+autostart = true

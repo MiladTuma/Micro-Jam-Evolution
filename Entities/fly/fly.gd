@@ -8,7 +8,7 @@ var is_fleeing: bool = false
 var player_ref: Node2D = null 
 
 func _ready() -> void:
-	
+	add_to_group("flies") 
 	%AnimatedSprite2D.play()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -37,3 +37,8 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		
 	move_and_slide()
+
+
+func get_eaten() -> void:
+	
+	queue_free() 

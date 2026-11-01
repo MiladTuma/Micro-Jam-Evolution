@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ivh51lvv8ir8"]
+[gd_scene format=3 uid="uid://8rm85i532403"]
 
 [ext_resource type="Script" uid="uid://657o0cn3cj0j" path="res://Entities/fly/fly.gd" id="1_cdmbg"]
 [ext_resource type="Texture2D" uid="uid://dfndo80kpeq6o" path="res://Entities/fly/Fly_sprites/Fly1.png" id="1_k8vmk"]
@@ -36,7 +36,7 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_bo1nx")
 frame_progress = 0.5088677
 
-[node name="Area2D" type="Area2D" parent="." unique_id=902770416]
+[node name="Area2D" type="Area2D" parent="." unique_id=902770416 groups=["flies", "player"]]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2014869005]
